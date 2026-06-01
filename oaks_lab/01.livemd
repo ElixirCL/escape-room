@@ -1,0 +1,95 @@
+<!-- livebook:{"file_entries":[{"name":"pokemon.csv","type":"attachment"}]} -->
+
+# Habitación 0: Inicio
+
+```elixir
+Mix.install([
+  {:explorer, "~> 0.11.1"},
+  {:kino, "~> 0.19.0"},
+  {:helpers, path: Path.expand("./helpers", __DIR__)}
+])
+
+defmodule Room do
+  require Explorer.DataFrame, as: DF
+  
+  def verify(df) do
+    if DF.n_columns(df) >= 10 do
+      Helpers.Messages.correct("02.livemd", "Has restaurado el sistema del laboratorio.")
+    else
+      Helpers.Messages.error("Revisa bien las instrucciones...\n¿Estás seguro que cargaste los datos correctamente?")
+    end
+    |> Kino.Markdown.new()
+  end
+end
+```
+
+## Contexto
+
+Despiertas dentro de un laboratorio muy conocido…
+
+¡Es el Laboratorio del **Profesor Oak**!
+
+Sin embargo, algo no anda bien… Las puertas están bloqueadas y el sistema de datos está caído.
+
+Un mensaje aparece en la pantalla principal:
+
+> Para restaurar el sistema y poder avanzar, debes cargar correctamente los datos de Pokémon y revisar los primeros registros.
+
+### ¿Cómo se cargan datos en Elixir?
+
+En Ciencia de Datos usamos [Explorer](https://github.com/elixir-explorer/explorer) para trabajar con archivos y tablas.
+
+Pasos típicos:
+
+1. Importar la biblioteca:
+
+<!-- livebook:{"force_markdown":true} -->
+
+```elixir
+require Explorer.DataFrame, as: DF
+```
+
+1. Leer un archivo .csv:
+
+<!-- livebook:{"force_markdown":true} -->
+
+```elixir
+"pokemon.csv"
+|> Kino.FS.file_path()
+|> DF.from_csv!()
+```
+
+1. Ver las primeras filas:
+
+<!-- livebook:{"force_markdown":true} -->
+
+```elixir
+Kino.DataTable.new()
+```
+
+## Desafío de la Habitación
+
+Completa las siguientes variables:
+
+* `file`: con la dirección del archivo de datos.
+* `df`: con el resultado de leer los datos usando `DF.from_csv!()`.
+
+Luego muestra las primeras filas usando `Kino.DataTable.new()`.
+
+```elixir
+require Explorer.DataFrame, as: DF
+
+file = "?"
+
+df = file
+  |> Kino.FS.file_path()
+# |> ?
+
+Kino.DataTable.new(?)
+```
+
+## Verificar tu respuesta
+
+```elixir
+Room.verify(df)
+```

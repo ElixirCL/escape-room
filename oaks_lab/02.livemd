@@ -1,0 +1,82 @@
+<!-- livebook:{"file_entries":[{"name":"pokemon.csv","type":"attachment"}]} -->
+
+# Habitación 1: Explorador de Datos
+
+```elixir
+Mix.install([
+  {:explorer, "~> 0.11.1"},
+  {:kino, "~> 0.19.0"},
+  {:helpers, path: Path.expand("./helpers", __DIR__)}
+])
+
+defmodule Room do
+  require Explorer.DataFrame, as: DF
+  
+  def verify(info, desc) do
+    case Enum.count(info) > 12 do
+      true -> case desc do
+                %DF{} -> Helpers.Messages.correct("03.livemd", "Has explorado correctamente el dataset.")
+                _ -> Helpers.Messages.error("Revisa bien las instrucciones...\nLa variable `desc` debe ser el resultado de `DF.describe()`.")
+              end
+      _ -> Helpers.Messages.error("Revisa bien las instrucciones...\n¿Estás seguro que cargaste `info` correctamente?")
+    end
+    |> Kino.Markdown.new()
+  end
+end
+```
+
+## Contexto
+
+El sistema se ha reiniciado parcialmente…
+
+Pero las puertas siguen bloqueadas.
+
+En la pantalla aparece un mensaje del Profesor Oak:
+
+> "Un verdadero Maestro Pokémon debe conocer bien sus datos antes de analizarlos.
+> Solo podrás avanzar si logras explorar la estructura y características de los Pokémon."
+
+### Explorar datos en Elixir
+
+Para obtener información general de un _DataFrame_ se pueden utilizar las siguientes funciones:
+
+<!-- livebook:{"force_markdown":true} -->
+
+```elixir
+require Explorer.DataFrame, as: DF
+```
+
+* `DF.names()`: Obtiene los nombres de las columnas.
+* `DF.dtypes()`: Obtiene los tipos de datos de las columnas.
+* `DF.n_rows()`: Obtiene la cantidad total de filas.
+* `DF.n_columns()`: Obtiene la cantidad total de columnas.
+* `DF.estimated_size()`: Obtiene el tamaño estimado del _DataFrame_.
+* `DF.describe()`: Ver estadísticas básicas de las columnas numéricas.
+
+## Desafío de la Habitación
+
+Ya cargaste los datos en la sala anterior (`df`).
+
+Ahora:
+
+* Crea una variable llamada `info` que almacene el resultado de `DF.names()` (solo ejecutarlo está bien).
+* Crea una variable llamada `desc` que almacene el resultado de `DF.describe()`.
+
+```elixir
+require Explorer.DataFrame, as: DF
+
+file = "pokemon.csv"
+
+df = file
+  |> Kino.FS.file_path()
+  |> DF.from_csv!()
+
+info = ?
+desc = ?
+```
+
+## Verificar tu respuesta
+
+```elixir
+Room.verify(info, desc)
+```

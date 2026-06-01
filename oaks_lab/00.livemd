@@ -1,0 +1,19 @@
+<!-- livebook:{"file_entries":[{"name":"oak.png","type":"attachment"}]} -->
+
+# Laboratorio del Profesor Oak 🧪
+
+## Introducción
+
+* Introducir los conceptos esenciales de **Elixir** aplicados al análisis de datos.
+* Aprender a trabajar con conjuntos de datos reales y entender su estructura.
+* Desarrollar habilidades de exploración, visualización y análisis de información.
+* Escribir y ejecutar código directamente en el navegador utilizando _Livebook_, sin necesidad de instalaciones adicionales.
+* Basado en [Laboratorio del Profesor Oak de Python Chile](https://python-chile.github.io/escape-room-pyschool/oaks_lab/oaks_lab.html)
+
+![Profesor Oak](files/oak.png)
+
+<!-- livebook:{"break_markdown":true} -->
+
+<h3 style="text-align: center">
+  <a href="01.livemd">🚀 Iniciar Escape Room</a>
+</h3>
