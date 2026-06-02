@@ -97,35 +97,19 @@ df = file
 Promedio por tipo:
 
 ```elixir
-promedio =
-  df
-  |> DF.group_by("Type 1")
-  |> DF.summarise(
-    Attack: mean(col("Attack")),
-    Defense: mean(col("Defense")),
-    HP: mean(col("HP")),
-    Speed: mean(col("Speed"))
-  )
+promedio = ?
 ```
 
 Tipo con mayor ataque promedio:
 
 ```elixir
-respuesta_ataque =
-  promedio
-  |> DF.sort_by(desc: col("Attack"))
-  |> DF.pull("Type 1")
-  |> Series.first()
+respuesta_ataque = ?
 ```
 
 Tipo con menor defensa promedio:
 
 ```elixir
-respuesta_defensa =
-  promedio
-  |> DF.sort_by(asc: col("Defense"))
-  |> DF.pull("Type 1")
-  |> Series.first()
+respuesta_defensa = ?
 ```
 
 ## Verifica tu respuesta
