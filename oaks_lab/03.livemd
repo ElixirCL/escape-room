@@ -1,9 +1,12 @@
+<!-- livebook:{"file_entries":[{"name":"pokemon.csv","type":"attachment"}]} -->
+
 # Habitación 2: Tipos de Pokémon
 
 ```elixir
 Mix.install([
   {:explorer, "~> 0.11.1"},
   {:kino, "~> 0.19.0"},
+  {:kino_explorer, "~> 0.1.25"},
   {:kino_vega_lite, "~> 0.1.13"},
   {:helpers, path: Path.expand("./helpers", __DIR__)}
 ])
@@ -89,17 +92,39 @@ file = "pokemon.csv"
 df = file
   |> Kino.FS.file_path()
   |> DF.from_csv!()
+```
 
-conteo = ?
+Contar los elementos
 
-chart = ?
+```elixir
+conteo =
+  df
+  |> DF.frequencies(["Type 1"])
+  |> DF.sort_by(desc: counts)
+```
 
+Crear la gráfica
+
+```elixir
+chart =
+  Vl.new(title: "Cantidad de Pokémon por Tipo")
+  |> Vl.data_from_values(conteo)
+  |> Vl.mark(:bar)
+  |> Vl.encode_field(:x, "Type 1", type: :nominal, title: "Tipo")
+  |> Vl.encode_field(:y, "counts", type: :quantitative, title: "Cantidad")
+
+```
+
+Obtener la respuesta
+
+```elixir
+respuesta =
+    conteo
+    |> DF.n_rows()
 ```
 
 ## Verificar tu respuesta
 
 ```elixir
-answer = ?
-
-Room.verify(answer)
+Room.verify(respuesta)
 ```

@@ -6,12 +6,13 @@
 Mix.install([
   {:explorer, "~> 0.11.1"},
   {:kino, "~> 0.19.0"},
+  {:kino_explorer, "~> 0.1.25"},
   {:helpers, path: Path.expand("./helpers", __DIR__)}
 ])
 
 defmodule Room do
   require Explorer.DataFrame, as: DF
-  
+
   def verify(info, desc) do
     case Enum.count(info) > 12 do
       true -> case desc do
@@ -70,9 +71,18 @@ file = "pokemon.csv"
 df = file
   |> Kino.FS.file_path()
   |> DF.from_csv!()
+```
 
-info = ?
-desc = ?
+Crear la variable `info`
+
+```elixir
+info = DF.names(df)
+```
+
+Crear la variable `desc`
+
+```elixir
+desc = DF.describe(df)
 ```
 
 ## Verificar tu respuesta
