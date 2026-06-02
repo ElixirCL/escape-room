@@ -1,0 +1,26 @@
+<!-- livebook:{"file_entries":[{"name":"winner.jpg","type":"attachment"}]} -->
+
+# Habitación Final
+
+## Contexto
+
+La última puerta se abre lentamente…
+Sientes una brisa fresca y el sonido de la naturaleza vuelve a rodearte.
+
+Has logrado superar todos los desafíos del laboratorio del *Profesor Oak*.
+
+No solo atrapaste datos… aprendiste a analizarlos, entenderlos y usarlos a tu favor.
+
+Frente a ti, una gran Pokébola holográfica aparece en el cielo y proyecta un mensaje:
+
+> Los verdaderos Maestros Pokémon no solo entrenan en batalla… también dominan el poder de los datos.
+
+Sabes que esta aventura no fue solo un juego.
+
+Has dado tus primeros pasos como *Científico de Datos Pokémon*.
+
+Y esto… es solo el comienzo.
+
+<!-- livebook:{"break_markdown":true} -->
+
+![Winner](files/winner.jpg)
