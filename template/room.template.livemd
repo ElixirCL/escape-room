@@ -1,4 +1,6 @@
-# Habitación 2: Tipos de Pokémon
+<!-- livebook:{"file_entries":[{"name":"data.csv","type":"attachment"}]} -->
+
+# Habitación n: <Nombre>
 
 ```elixir
 Mix.install([
@@ -6,25 +8,23 @@ Mix.install([
   {:kino, "~> 0.19.0"},
   {:kino_explorer, "~> 0.1.25"},
   {:kino_vega_lite, "~> 0.1.13"},
-  {:helpers, path: Path.expand("../helpers", __DIR__)}
+  {:helpers, path: Path.expand("./helpers", __DIR__)}
 ])
 
 defmodule Room do
   require Explorer.DataFrame, as: DF
 
   def verify(count) do
-    case count == 18 do
-      true -> Helpers.Messages.correct(
-              "04.livemd",
-              "Existen 18 tipos de Pokémon."
-            )
-
-          _ ->
-            Helpers.Messages.error(
-              "La puerta sigue cerrada... Revisa bien los datos y cuenta nuevamente los tipos de Pokémon."
-            )
-        end
-
+    if count == 18 do
+        Helpers.Messages.correct(
+            "02.livemd",
+            "Existen 18 tipos de Pokémon."
+        )
+    else
+        Helpers.Messages.error(
+            "La puerta sigue cerrada... Revisa bien los datos y cuenta nuevamente los tipos de Pokémon."
+        )
+    end
     |> Kino.Markdown.new()
   end
 end
@@ -50,31 +50,6 @@ conteo =
   |> DF.sort_by(desc: counts)
 ```
 
-Si se quiere contar la cantidad total de filas
-
-<!-- livebook:{"force_markdown":true} -->
-
-```elixir
-conteo
-|> DF.n_rows()
-```
-
-Para graficar los resultados se utiliza [Vega-lite](https://vega.github.io/vega-lite/):
-
-<!-- livebook:{"force_markdown":true} -->
-
-```elixir
-alias VegaLite, as: Vl
-
-chart =
-  Vl.new()
-  |> Vl.data_from_values(conteo)
-  |> Vl.mark(:bar)
-  |> Vl.encode_field(:x, "Type 1", type: :nominal, title: "Tipo")
-  |> Vl.encode_field(:y, "counts", type: :quantitative, title: "Cantidad")
-
-```
-
 ## Desafío de la habitación
 
 1. Crea la variable conteo que contenga la cantidad de Pokémon por Type 1.
@@ -83,16 +58,17 @@ chart =
 
 ```elixir
 require Explorer.DataFrame, as: DF
+alias Explorer.Series
 alias VegaLite, as: Vl
 
-file = Path.expand("../files/pokemon.csv", __DIR__) # "pokemon.csv"
+file = "pokemon.csv"
 
 df = file
-  # |> Kino.FS.file_path()
+  |> Kino.FS.file_path()
   |> DF.from_csv!()
 ```
 
-## Contar los elementos
+Contar los elementos
 
 ```elixir
 conteo =
@@ -101,7 +77,7 @@ conteo =
   |> DF.sort_by(desc: counts)
 ```
 
-## Crear la gráfica
+Crear la gráfica
 
 ```elixir
 chart =
@@ -113,7 +89,7 @@ chart =
 
 ```
 
-## Obtener la respuesta
+Obtener la respuesta
 
 ```elixir
 respuesta =

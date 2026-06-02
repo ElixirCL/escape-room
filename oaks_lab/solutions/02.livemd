@@ -71,13 +71,13 @@ df = file
   |> DF.from_csv!()
 ```
 
-Crear la variable `info`
+## Crear la variable `info`
 
 ```elixir
 info = DF.names(df)
 ```
 
-Crear la variable `desc`
+## Crear la variable `desc`
 
 ```elixir
 desc = DF.describe(df)

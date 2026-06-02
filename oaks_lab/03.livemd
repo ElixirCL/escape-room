@@ -94,7 +94,7 @@ df = file
   |> DF.from_csv!()
 ```
 
-Contar los elementos
+## Contar los elementos
 
 ```elixir
 conteo =
@@ -103,7 +103,7 @@ conteo =
   |> DF.sort_by(desc: counts)
 ```
 
-Crear la gráfica
+## Crear la gráfica
 
 ```elixir
 chart =
@@ -115,7 +115,7 @@ chart =
 
 ```
 
-Obtener la respuesta
+## Obtener la respuesta
 
 ```elixir
 respuesta =
