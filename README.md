@@ -2,9 +2,7 @@
 
 _Escape Room_ es un juego de escape interactivo basado en la web construido con _Elixir_ y [Livebook](https://livebook.dev/). Los jugadores resuelven rompecabezas y desafíos escribiendo y ejecutando código _Elixir_ directamente en su navegador.
 
-Este espacio ha sido creado con el objetivo de motivar a los estudiantes a conocer y aprender el lenguaje de programación **Elixir*.
-
-_Escape Room_ es una iniciativa de la organización *Elixir Chile*.
+Este espacio ha sido creado con el objetivo de motivar a los estudiantes a conocer y aprender el lenguaje de programación*Elixir*. _Escape Room_ es una iniciativa de la organización *Elixir Chile*.
 
 Nuestro objetivo es proporcionar a la comunidad los recursos necesarios para aprender y mejorar sus habilidades en *Elixir*
 y la ciencia de datos usando esta tecnología.
