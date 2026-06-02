@@ -18,7 +18,7 @@ defmodule Helpers.Messages do
 
   def error(message \\ "") do
     """
-    <h3 style="text-align: center; background-color: red; color: white; padding: 1em;">
+    <h3 style="text-align: center; background-color: rgb(217, 164, 6); color: white; padding: 1em;">
       Error.
       #{message}
     </h3>
