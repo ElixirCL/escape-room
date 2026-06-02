@@ -9,9 +9,9 @@ _Escape Room_ es una iniciativa de la organización *Elixir Chile*.
 Nuestro objetivo es proporcionar a la comunidad los recursos necesarios para aprender y mejorar sus habilidades en *Elixir*
 y la ciencia de datos usando esta tecnología.
 
-| |  |
-|---|---|
-| <img src="https://raw.githubusercontent.com/ElixirCL/elixircl.github.io/main/assets/logo.png" style="width:200px;height:auto;margin-bottom:5%;" alt="logo" title="Elixir Chile. Logotipo creado por Efraín Zambrano."> | <img src="https://user-images.githubusercontent.com/292738/194148600-74999342-103f-48ef-9bde-4dbcebbf05d5.png" style="width:400px;height:auto;margin-bottom:5%;" alt="https://www.irasutoya.com/2012/08/blog-post_26.html"> |
+<a href="https://elixircl.github.io">
+    <img src="https://raw.githubusercontent.com/ElixirCL/elixircl.github.io/main/assets/logo.png" style="width:20%;height:auto;" alt="logo" title="Elixir Chile. Logotipo creado por Efraín Zambrano.">
+</a>
 
 
 ## Características
