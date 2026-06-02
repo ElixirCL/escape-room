@@ -1,3 +1,5 @@
+<!-- livebook:{"file_entries":[{"name":"pokemon.csv","type":"attachment"}]} -->
+
 # Habitación 4: Visualización de Combate
 
 ```elixir
@@ -6,7 +8,7 @@ Mix.install([
   {:kino, "~> 0.19.0"},
   {:kino_explorer, "~> 0.1.25"},
   {:kino_vega_lite, "~> 0.1.13"},
-  {:helpers, path: Path.expand("../helpers", __DIR__)}
+  {:helpers, path: Path.expand("./helpers", __DIR__)}
 ])
 
 defmodule Room do
@@ -73,18 +75,17 @@ df = file
 Elegir dos estadísticas de combate (`col_x` y `col_y`) — por ejemplo `Attack` y `Defense`.
 
 ```elixir
-col_x = "Attack"  # Por ejemplo: 'Attack', 'Defense', 'HP', 'Speed'
-col_y = "Defense"  # Por ejemplo: 'Attack', 'Defense', 'HP', 'Speed'
+col_x = nil  # Por ejemplo: 'Attack', 'Defense', 'HP', 'Speed'
+col_y = nil  # Por ejemplo: 'Attack', 'Defense', 'HP', 'Speed'
 ```
 
 ## Columna suma
 
 Crear una nueva columna llamada `Suma`, sumando esas dos estadísticas.
+Usando `DF.mutate(df, Suma: col(^col_x) + col(^col_y))`.
 
 ```elixir
-df = 
-  df
-  |> DF.mutate(Suma: col(^col_x) + col(^col_y))
+df = nil
 ```
 
 ## Gráfico de dispersión
@@ -116,12 +117,12 @@ df
 
 Definir en respuesta el nombre del Pokémon con la mayor suma.
 
+- `DF.sort_by(desc: col("Suma"))`: Ordena descendente según la columna "Suma".
+- `DF.pull("Name")`: Obtiene solamente el valor de la columna "Name".
+- `Series.first()`: Obtiene solamente el primer resultado.
+
 ```elixir
-respuesta = 
-  df 
-  |> DF.sort_by(desc: col("Suma"))
-  |> DF.pull("Name")
-  |> Series.first()
+respuesta = nil
 ```
 
 ## Verificar tu respuesta
