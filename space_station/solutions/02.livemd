@@ -55,7 +55,7 @@ La primera tarea es escribir `"Cerrar"`.
 Cambia el valor de la variable respuesta por `"Cerrar"` y ejecuta la celda.
 
 <details>
-<summary>Pista</summary>
+<summary>💡 ¿Cómo se usan los Strings en Elixir?</summary>
 
 Recuerda que en _Elixir_ los strings (cadenas de texto) tienen diferencia al escribirlas entre comillas
 dobles o simples. Al usar comillas dobles es un string `utf-8`. Al usar comillas simples es una cadena
