@@ -21,7 +21,7 @@ defmodule Room do
             "¡Muy Bien!"
         )
     else
-        Helpers.Messages.error(
+        Helpers.Messages.info(
             "Estás probando nuevas respuestas, ¡muy bien!. Recuerda que la respuesta es Elixir"
         )
     end

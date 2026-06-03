@@ -4,9 +4,9 @@ defmodule Helpers.Messages do
   def correct(link, message \\ "") do
     """
     <a href="#{link}" style="text-decoration: none;">
-      <h3 style="text-align: center; background-color: rgb(40, 167, 69); padding: 1em; color: white;">
+      <h3 style="text-align: center; background-color: rgb(40, 167, 69); color: white; padding: 1em;">
           <p>
-            ¡Correcto! #{message}.
+            #{message}
           </p>
           <p>
             Avanza a la siguiente habitación.
@@ -16,10 +16,17 @@ defmodule Helpers.Messages do
     """
   end
 
+  def info(message \\ "") do
+    """
+    <h3 style="text-align: center; background-color: rgb(20, 138, 156); color: white; padding: 1em;">
+      #{message}
+    </h3>
+    """
+  end
+
   def error(message \\ "") do
     """
     <h3 style="text-align: center; background-color: rgb(217, 164, 6); color: white; padding: 1em;">
-      Error.
       #{message}
     </h3>
     """

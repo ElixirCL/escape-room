@@ -1,0 +1,95 @@
+# Habitación 1: Variable String
+
+```elixir
+Mix.install([
+  {:explorer, "~> 0.11.1"},
+  {:kino, "~> 0.19.0"},
+  {:kino_explorer, "~> 0.1.25"},
+  {:kino_vega_lite, "~> 0.1.13"},
+  {:helpers, path: Path.expand("../helpers", __DIR__)}
+])
+
+defmodule Room do
+  require Explorer.DataFrame, as: DF
+
+  def verify(answer) do
+    case answer do
+
+      "Cerrar" -> Helpers.Messages.correct(
+            "03.livemd",
+            "¡Muy bien!, Es el valor buscado."
+        )
+
+      ~c"Cerrar" -> Helpers.Messages.info(
+            "Vas por buen camino, pero debes usar un string utf-8 con comillas dobles. Inténtalo nuevamente."
+        )
+
+      _ -> Helpers.Messages.error(
+            "No es la respuesta correcta. Inténtalo nuevamente."
+        )
+    end
+    |> Kino.Markdown.new()
+  end
+end
+```
+
+## 👨‍🚀 Llegada a la estación espacial exitosa 🛰
+
+¡Buena suerte en tú misión! 💫
+
+La terminal del sistema de oxígeno comienza a parpadear en rojo... algo no está bien.
+
+<div style="text-align:center; background-color: rgb(220, 53, 69); color: white; padding: 1em;">
+    <h3 style="color: white;">⚠️ ¡Peligro! ⚠️</h3>
+    <p>
+        Se ha detectado pérdida de oxígeno en la sala `B9-2`.
+    </p>
+</div>
+
+🕹️ ¡Rápido! Activa la puerta de emergencia. Usa la terminal para enviar la señal correcta
+y poder cerrar la sala antes que se agote el oxígeno por completo.
+
+## Desafío de la Habitación
+
+La primera tarea es escribir `"Cerrar"`.
+Cambia el valor de la variable respuesta por `"Cerrar"` y ejecuta la celda.
+
+<details>
+<summary>Pista</summary>
+
+Recuerda que en _Elixir_ los strings (cadenas de texto) tienen diferencia al escribirlas entre comillas
+dobles o simples. Al usar comillas dobles es un string `utf-8`. Al usar comillas simples es una cadena
+de bytes de bajo nivel del tipo `charlist` (lista de caracteres compatibles con _Erlang_).
+
+La respuesta que se busca es un string utf-8 como el siguiente:
+
+```elixir
+respuesta = "Ejemplo"
+```
+
+Si escribes con comillas simples no funcionará por que son elementos distintos (para el compilador).
+
+```elixir
+respuesta = 'Ejemplo'
+```
+
+En la nueva sintaxis se utiliza una `~c` antes del elemento
+para ser explícito en que es una cadena de bytes de bajo nivel.
+
+```elixir
+respuesta = ~c"Ejemplo"
+```
+
+</details>
+
+## Establece tu respuesta
+
+```elixir
+respuesta = "Cerrar"
+```
+
+## Verificar tu respuesta
+
+```elixir
+Room.verify(respuesta)
+```
