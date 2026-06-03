@@ -14,15 +14,20 @@ Mix.install([
 defmodule Room do
   require Explorer.DataFrame, as: DF
 
-  def verify(count) do
-    if count == 18 do
-        Helpers.Messages.correct(
-            "02.livemd",
-            "Existen 18 tipos de Pokémon."
+  def verify(answer) do
+    case answer do
+
+      15360 -> Helpers.Messages.correct(
+            "04.livemd",
+            "¡Muy bien!, Es el valor buscado."
         )
-    else
-        Helpers.Messages.error(
-            "La puerta sigue cerrada... Revisa bien los datos y cuenta nuevamente los tipos de Pokémon."
+
+      ~c"Cerrar" -> Helpers.Messages.info(
+            "Vas por buen camino, pero debes usar un string utf-8 con comillas dobles. Inténtalo nuevamente."
+        )
+
+      _ -> Helpers.Messages.error(
+            "No es la respuesta correcta. Inténtalo nuevamente."
         )
     end
     |> Kino.Markdown.new()
