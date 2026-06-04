@@ -103,7 +103,7 @@ numeros =
 
 ```elixir
 a = 1
-b = 1000
+b = 0
 ```
 
 ```elixir
