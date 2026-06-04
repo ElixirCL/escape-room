@@ -1,0 +1,121 @@
+<!-- livebook:{"file_entries":[{"name":"07.png","type":"attachment"}]} -->
+
+# Habitación 6: Índices en Lista
+
+```elixir
+Mix.install([
+  {:explorer, "~> 0.11.1"},
+  {:kino, "~> 0.19.0"},
+  {:kino_explorer, "~> 0.1.25"},
+  {:kino_vega_lite, "~> 0.1.13"},
+  {:helpers, path: Path.expand("../helpers", __DIR__)}
+])
+
+defmodule Room do
+  require Explorer.DataFrame, as: DF
+
+  def verify(answer) do
+    case answer do
+      27.75 -> Helpers.Messages.correct(
+            "08.livemd",
+            "¡Muy bien!, Es el valor buscado."
+        )
+
+      _ -> Helpers.Messages.error(
+            "No es la respuesta correcta. Inténtalo nuevamente."
+        )
+    end
+    |> Kino.Markdown.new()
+  end
+end
+```
+
+## Contexto
+
+Mientras te acercas al núcleo de comunicaciones, detectas un patrón pulsante en
+la pantalla del sistema cifrado. Es la secuencia de Fibonacci, transmitida como una
+señal de emergencia desde un satélite perdido hace años 🛰️✨.
+
+![](files/07.png)
+
+## Desafío de la habitación
+
+💾 Extrae y analiza ciertas posiciones para encontrar
+la clave de acceso y así poder avanzar al siguiente nivel.
+
+De la lista de Fibonacci generada, extrae los elementos
+(números) en los índices `0`, `2`, `10`, `-2`.
+
+Luego obtén el promedio de los números extraídos.
+
+<details>
+<summary>💡¿Cómo se acceden a elementos de una lista en Elixir?</summary>
+
+Para acceder a un elemento se necesita indicar su índice y usar la función `Enum.at/2`, los índices comienzan
+desde el valor `0` hasta `n - 1` dónde `n` igual a
+la cantidad de elementos de la lista.
+
+En **Elixir** los indices pueden ser también
+negativos `-1`, `-2`, `-3`, ..., `-n` pero estos se
+cuentan de derecha a izquierda.
+
+Teniendo la siguiente lista
+
+```elixir
+lista = [1, 2, 3, 4, 5, 6]
+```
+
+Índices positivos:
+
+- `0` para obtener 1
+- `2` para obtener 3
+- `3` para obtener 4
+
+Índices negativos:
+
+- `-6` para obtener 1
+- `-3` para obtener 4
+- `-1` para obtener 6
+
+Ejemplo
+
+```elixir
+lista = [1, 2, 3, 4]
+
+Enum.at(lista, 0) # Obtiene valor 1
+
+Enum.at(lista, 3) # Obtiene valor 4
+
+Enum.at(lista, -3) # Obtiene valor 2
+```
+</details>
+
+## Establece tu respuesta
+
+```elixir
+lista_fibonacci = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+```
+
+```elixir
+promedio = [
+    Enum.at(lista_fibonacci, 0),
+    Enum.at(lista_fibonacci, 2),
+    Enum.at(lista_fibonacci, 10),
+    Enum.at(lista_fibonacci, -2)
+    ]
+```
+
+```elixir
+alias Explorer.Series
+
+respuesta =
+    promedio
+    |> Series.from_list()
+    |> Series.mean()
+```
+
+## Verifica tu respuesta
+
+```elixir
+Room.verify(respuesta)
+```
