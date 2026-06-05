@@ -1,0 +1,108 @@
+<!-- livebook:{"file_entries":[{"name":"08.png","type":"attachment"}]} -->
+
+# Habitación 7: Ordenar Números de Lista
+
+```elixir
+Mix.install([
+  {:explorer, "~> 0.11.1"},
+  {:kino, "~> 0.19.0"},
+  {:kino_explorer, "~> 0.1.25"},
+  {:kino_vega_lite, "~> 0.1.13"},
+  {:helpers, path: Path.expand("../helpers", __DIR__)}
+])
+
+defmodule Room do
+  require Explorer.DataFrame, as: DF
+
+  def verify(answer) do
+    case answer do
+        [150, 375, 890] -> Helpers.Messages.correct(
+            "09.livemd",
+            "¡Muy bien!, Es el valor buscado."
+        )
+
+      _ -> Helpers.Messages.error(
+            "No es la respuesta correcta. Inténtalo nuevamente."
+        )
+    end
+    |> Kino.Markdown.new()
+  end
+end
+```
+
+## Contexto
+
+Desde el módulo de control, detectan múltiples objetos
+orbitando alrededor de la estación espacial ⚠️.
+
+Es urgente analizar sus coordenadas para prevenir colisiones 🌌💥.
+
+![](files/08.png)
+
+## Desafío de la habitación
+
+🚀 Ordena y extrae los tres siguientes datos clave:
+
+* El objeto más cercano a la estación.
+* El objeto más lejano.
+* El objeto que se encuentra en el centro de la lista (una vez ordenada).
+
+Ordena la `lista` ocupando la
+función `Enum.sort/1` y utilizando los `índices`
+necesarios para crear una nueva lista con las
+coordenadas requeridas.
+
+<details>
+<summary>💡¿Cómo se obtiene el valor del centro?</summary>
+
+El valor del centro depende del largo de la lista:
+
+- Si el largo de la lista es un número par: Es el valor `entero` del promedio de los valores que están al medio. Es decir si la lista tiene 6 números: `[1, 2, 3, 4, 5, 6]` el
+valor será del promedio de los números `3` (posición 2) y `2` (posición 1) (`2.5`, sacando el entero sería `2`).
+
+- Si el lago de la lista es un número impar: Es el valor de al medio.
+
+```elixir
+largo = Enum.count(lista)
+valor = Enum.at(lista, div(largo, 2)) # Para lista con largo impar
+```
+
+La operación `div(largo, 2)` es una división que obtiene
+sólo el valor entero del resultado.
+
+Si es `div(7, 2)` obtiene el valor de `3`.
+
+</details>
+
+## Establece tu respuesta
+
+```elixir
+coordenadas =
+    [540, 320, 890, 150, 430, 270]
+    |> Enum.sort()
+```
+
+```elixir
+count = Enum.count(coordenadas)
+
+valor_medio =
+  if rem(count, 2) == 0 do
+    largo = div(count,  2)
+    (Enum.at(coordenadas, largo - 1) + Enum.at(coordenadas, largo))
+    |> div(2)
+  else
+    Enum.at(coordenadas, div(count, 2))
+  end
+
+respuesta = [
+    Enum.at(coordenadas, 0),
+    valor_medio,
+    Enum.at(coordenadas, -1)
+]
+```
+
+## Verifica tu respuesta
+
+```elixir
+Room.verify(respuesta)
+```
